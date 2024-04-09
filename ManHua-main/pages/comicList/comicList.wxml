@@ -1,0 +1,48 @@
+<!--pages/comicList/comicList.wxml-->
+<!-- 数据_格式_过滤器 -->
+<wxs src="/filter/format-filter.wxs" module="filter"></wxs>
+
+<scroll-view class="comic-list" scroll-y="true" enable-flex="true" bindscrolltolower="scrollToLowerHandle">
+    <van-nav-bar title="{{comic_title}}"  left-arrow fixed placeholder border="{{ false }}" bind:click-left="returnUpLevelHandle"
+    />
+    <block wx:for="{{ comic_info }}"  wx:for-item="comic" wx:key="index">
+        <view class="comic-wrapper">
+        <!-- 漫画_详解 -->
+            <view class="comic-details" bind:tap="gotoComic" data-comicId="{{comic.comic_id}}">
+                <lazy-image class="cover" width="100%" 
+                    ratio="{{ filter.convertRatioFormat('3:4') }}" 
+                    fit="widthFix" radius="6" src="https://image.yqmh.com/mh/{{comic.comic_id}}.jpg-300x400.jpg"
+                />
+                <!-- <image class="cover" src="https://image.yqmh.com/mh/{{comic.comic_id}}.jpg-300x400.jpg" /> -->
+                <view class="content">
+                    <view class="head">
+                        <text class="title">{{ comic.comic_name }}</text>
+                        <view class="button"  wx:if="{{ !comic.url }}" catchtap="onCollectbtn" 
+                            data-comicId="{{comic.comic_id}}" data-comic_name="{{comic.comic_name}}" data-index="{{ index }}">
+                            收藏
+                        </view>
+                        <view class="button" wx:else="" catchtap="onCollectbtn" 
+                            data-comicId="{{comic.comic_id}}" data-comic_name="{{comic.comic_name}}" data-index="{{ index }}">
+                            取消收藏
+                        </view>
+                    </view>
+                    <view class="info">
+                        <view class="comic-tip">
+                            <!-- <view class="copyright-type">{{ comic.copyright_type_cn }}</view> -->
+                            <text class="comic-status">{{ comic.content }}</text>
+                        </view>
+                        <text class="comic-heat">❁ {{ filter.formatNumber(comic.total_view_num) }}</text>
+                        <view class="comic-type">
+                            <block wx:for="{{ comic.comic_type }}" wx:key="index">
+                                <text class="item">{{ item }}</text>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <refresh isHidRefresh="{{isHidRefresh}}"  isNoMore="{{isNoMore}}" />
+</scroll-view>
+
+<!-- <loading isHideLoading="{{ isHideLoading }}" /> -->

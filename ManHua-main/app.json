@@ -1,0 +1,57 @@
+{
+    "entryPagePath": "pages/home/home",
+    "pages": [
+        "pages/home/home",
+        "pages/chapterRead/chapterRead",
+        "pages/bookDetails/bookDetails",
+        "pages/bookShelf/bookShelf",
+        "pages/find/find",
+        "pages/toUpdate/toUpdate",
+        "pages/myself/myself",
+        "components/comic-list/index",
+        "pages/about/about",
+        "pages/setting/setting",
+        "pages/comicList/comicList",
+        "pages/rank/rank",
+        "pages/sort/sort",
+        "pages/sortList/sortList"
+    ],
+    "window": {
+        "navigationBarTitleText": "看漫画",
+        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom"
+    },
+    "tabBar": {
+        "custom": true,
+        "color": "#000000",
+        "selectedColor": "#000000",
+        "backgroundColor": "#fff",
+        "list": [
+            {
+                "pagePath": "pages/find/find",
+                "text": "搜索"
+            },
+            {
+                "pagePath": "pages/toUpdate/toUpdate",
+                "text": "更新"
+            },
+            {
+                "pagePath": "pages/home/home",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/bookShelf/bookShelf",
+                "text": "书架"
+            },
+            {
+                "pagePath": "pages/myself/myself",
+                "text": "我的"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "downloadFile": 10000
+    },
+    "sitemapLocation": "sitemap.json"
+}

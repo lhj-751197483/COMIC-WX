@@ -1,0 +1,120 @@
+/* pages/sortList/sortList.wxss */
+/* category.wxss */
+.navbar{
+    display: flex;
+    height: 100%;
+    justify-items: center;
+    align-items: center;
+    color:rgb(140, 140, 140);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+  
+.category-list {
+    display: flex;
+    height: 80rpx;
+}
+  
+.category-item {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.category-item.active{
+    font-weight: bold;
+}
+
+.comic-swiper {
+    display: flex;
+    width: 100vw;
+    height: calc(100vh - 200rpx);
+}
+
+.comic-list {
+    width: 100vw;
+    height: 100%;
+}
+
+.comic-item {
+    display: flex;
+    margin: 20rpx;
+    margin-bottom: 50rpx;
+}
+
+.comic-item .picture {
+    position: relative;
+    width: 200rpx;
+    margin-right: 20rpx;
+}
+  
+.picture .picture_top {
+    position: absolute; 
+    left: 3%; 
+    top: 1%; 
+    align-items: center;
+    justify-items: center;
+    color: rgb(255, 255, 255);
+    z-index: 2;
+}
+
+.picture .picture_bottom {
+    display: flex;
+    position: absolute; 
+    bottom: 3%;
+    right: 3%; 
+    font-size: 20rpx;
+    align-items: center;
+    justify-items: center;
+    color: rgb(255, 255, 255);
+    z-index: 2;
+}
+
+.info {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content:space-between;
+    padding: 30rpx 0rpx;
+}
+  
+.title {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #333;
+}
+  
+.intro {
+    font-size: 24rpx;
+    color: #666;
+    margin-top: 10rpx;
+}
+
+.info .comic-type .item {
+    display: inline-block;
+}
+
+.comic-type .item {
+    height: 28rpx;
+    line-height: 28rpx;
+    padding: 0rpx 15rpx;
+    border-radius: 30rpx;
+    margin-right: 10rpx;
+    font-size: 20rpx;
+    /* border: 1rpx #e6e6e6 solid; */
+    border: 1rpx #2c2b2b solid;
+}
+
+.ranking {
+    display: block;
+    flex-flow: row;
+    font-size: 25rpx;
+    margin-top: 10rpx;
+    width: 100%;
+    height: 95rpx;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: row;
+}
+  

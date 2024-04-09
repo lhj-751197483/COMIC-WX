@@ -1,0 +1,106 @@
+.view-body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+
+.slide-wrapper {
+  width: var(--comic-banner-width, 100vw);
+  height: var(--comic-banner-height, calc(100vw * 2 / 3));
+  margin-bottom: 35rpx;
+}
+
+.slide-wrapper .wx-swiper-dot {
+  position: relative;
+  width: 10rpx;
+  height: 10rpx;
+  margin-left: -8rpx;
+}
+
+.slide-wrapper swiper,
+.slide-wrapper image {
+  width: 100%;
+  height: 100%;
+}
+
+.slide-wrapper .cat-ear {
+  position: relative;
+  left: 0;
+  bottom: 98rpx;
+  width: 100%;
+  height: 100rpx;
+  z-index: 10;
+}
+
+.comic-main {
+  position: relative;
+  box-sizing: border-box;
+  background-color: #fff;
+  padding-bottom: 150rpx;
+  box-sizing: border-box;
+}
+
+.mult {
+  width: 100%;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.mult.sow {
+  padding: 0 25rpx;
+}
+
+.mult-head, 
+.mult-head .left,
+.mult-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mult-head {
+  justify-content: space-between;  
+  height: 65rpx;
+  padding: 0 0 10rpx;
+}
+
+.mult-head .mult-title {
+  flex: 1;
+  margin-right: 10rpx;
+  color: #555555;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.mult-head .arrow {
+  color: #555555;
+  font-size: 40rpx;
+}
+
+.mult-head .refresh {
+    border: #555555;
+    border-style: solid;
+    border-width: thin;
+    text-align: center;
+    width: 140rpx;
+    font-size: 30rpx;
+    color: #555555;
+    border-radius: 50px;
+}
+
+.mult-body .bottom{
+    color: #757575;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 25rpx;
+    background-color: #e7e6e6;
+    height: 80rpx;
+    width: 47.5%;
+}
+
+
+
+.mult-body {
+  flex-flow: row wrap;
+  overflow: hidden;
+}

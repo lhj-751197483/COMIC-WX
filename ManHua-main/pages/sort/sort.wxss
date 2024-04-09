@@ -1,0 +1,72 @@
+/* pages/sort/sort.wxss */
+/* category.wxss */
+.container {
+    display: flex;
+    flex-direction: column;
+}
+  
+.category-list {
+    width: 100vw;
+    height: calc(100vh - 64px);
+}
+  
+.category-item {
+    margin: 20rpx;
+    padding: 20rpx;
+    margin-bottom: 80rpx;
+    border-radius: 30rpx;
+    border: 1px solid rgb(75, 74, 74);
+}
+  
+.category-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10rpx;
+}
+
+.title {
+    font-size: 35rpx;
+    font-weight: bold;
+    color: orange;
+}
+
+.category-body {
+    display: flex;
+    flex-wrap: row;
+    justify-content: space-between;
+    margin-top: 30rpx;
+}
+
+.comics-list {
+    width: 50%;
+    /* margin-bottom: 10rpx; */
+    margin-top: 10rpx;
+}
+
+.comic {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 30rpx;
+}
+
+.ranking {
+    font-weight: bold;
+    font-size: 30rpx;
+    color: orange;
+}
+
+.comic-title {
+    margin-left: 10rpx;
+    font-size: 28rpx;
+}
+  
+.first-comic-image {
+    width: 35%;
+    margin-bottom: 10rpx;
+}
+  
+.view-category {
+    font-size: 20rpx;
+    color: darkgray;
+}

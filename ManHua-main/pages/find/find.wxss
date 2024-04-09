@@ -1,0 +1,183 @@
+/* pages/find/find.wxss */
+/* 在对应的样式文件中（例如app.wxss或search.wxss） */
+.search-page{
+	padding: 0 20rpx;
+}
+
+.comic-wrapper {
+	padding: 0 var(--padding-md, 38rpx);
+	margin-bottom: 200rpx;
+}
+
+.comic-wrapper .comic-details {
+	display: flex;
+	padding-left: 20rpx;
+}
+
+.comic-wrapper .comic-details .cover {
+	margin-right: 40rpx;
+	width: var(--comic-cover_3_4-width, 31.5vw);
+	height: var( --comic-cover_3_4-height, calc(31.5vw * 4 / 3));
+	border-radius: var(--comic-cover_3_4-boder-radius, 10rpx);
+}
+
+.comic-wrapper .comic-details .content {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+}
+
+.comic-wrapper .content .title {
+	font-size: 40rpx;
+	font-weight: bold;
+}
+
+.comic-wrapper .content .info {
+	padding-bottom: 20rpx;
+	font-size: 22rpx;
+	color: var(--comic-details-font-color, rgb(150, 151, 153));
+}
+
+.comic-wrapper .info .comic-tip,
+.comic-wrapper .info .comic-heat {
+	margin-bottom: 10rpx;
+}
+
+.comic-wrapper .comic-tip .copyright-type,
+.comic-wrapper .comic-tip .comic-status,
+.comic-wrapper .info .comic-type .item {
+	display: inline-block;
+}
+
+.comic-wrapper .comic-type .item {
+	height: 28rpx;
+	line-height: 28rpx;
+	padding: 0rpx 15rpx;
+	border-radius: 30rpx;
+	margin-right: 10rpx;
+	border: 1rpx #e6e6e6 solid;
+}
+
+.comic-wrapper .comic-tip .copyright-type {
+	padding: 0rpx 15rpx;
+	border-radius: 30rpx;
+	color: white;
+	background-image: linear-gradient(90deg,#ff6a8d,#fe4e51);
+}
+
+.comic-wrapper .comic-tip .comic-status {
+	font-size: 24rpx;
+	margin-left: 15rpx;
+}
+
+.comic-wrapper .info .comic-heat {
+	display: block;
+	font-size: 25rpx;
+}
+  
+
+.top-title {
+    height: 160rpx;
+    background: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.search-box {
+	display: flex;
+	align-items: center;
+	height: 30px;
+	border-radius: 20px;
+	background-color: #f2f2f2;
+	padding: 0 10px;
+	margin-bottom: 40rpx;
+  }
+  
+  .search-input {
+	flex: 1;
+	height: 100%;
+	border: none;
+	background-color: transparent;
+	outline: none;
+	font-size: 14px;
+  }
+
+
+  /* search.wxss */
+.search-history {
+	margin-top: 16px;
+  }
+
+.hot-search-title{
+	font-size: 14px;
+	color: #04a312a6;
+	margin-bottom: 8px;
+}
+  .history-title {
+	font-size: 14px;
+	color: #04a312a6;
+	margin-bottom: 8px;
+  }
+  
+  .history-list {
+	display: flex;
+	flex-wrap: wrap;
+  }
+  
+  .history-item {
+	background-color: #e0dddd;
+	color: #535353;
+	font-size: 12px;
+	border-radius: 16px;
+	padding: 4px 12px;
+	margin-right: 8px;
+	margin-bottom: 8px;
+  }
+  
+  .clear-btn {
+	font-size: 12px;
+	color: #04a312a6;
+	text-align: center;
+	margin-top: 8px;
+	cursor: pointer;
+  }
+  
+  /* search.wxss */
+.clear-icon {
+    z-index: 2;
+    height: 100%;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .clear-icon image {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  
+.hot-search-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+  
+.hot-search-item {
+	background-color: #EDEDED;
+	padding: 6px 12px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	color: #333333;
+	font-size: 14px;
+	border-radius: 4px;
+}
+  
+.search-results{
+	height: 100%;
+}

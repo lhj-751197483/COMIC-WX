@@ -1,0 +1,8 @@
+{
+	"navigationBarTextStyle": "black",
+    "usingComponents": {
+        "wait": "/components/wait/index",
+        "refresh": "/components/refresh/index",
+        "comic-card": "/components/comic/card/index"
+      }
+}

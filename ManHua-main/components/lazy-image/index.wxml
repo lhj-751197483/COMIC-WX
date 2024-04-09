@@ -1,0 +1,19 @@
+<wxs src="./index.wxs" module="computed" />
+
+<view 
+  style="{{ computed.rootStyle({ width, height, radius, ratio: ratio === '' ? imageRatio : ratio }) }}" 
+  class="custom-class viewport" 
+  data-src="{{ src }}" bind:tap="onClick"
+>
+  <image src="{{ src }}" class="lazy-image" wx:if="{{ !isError && alreadyShow}}" mode="{{ computed.mode(fit) }}" role="img" bind:load="onLoad" bind:error="onError" />
+
+  <view wx:if="{{ isLoading && showLoading && !useLoadingSlot }}" class="img-loading">
+    <van-loading type="spinner" size="20" vertical/>
+  </view>
+  <slot wx:elif="{{ isLoading && showLoading && useLoadingSlot }}" name="loading"></slot>
+
+  <view wx:if="{{ isError && showError && !useErrorSlot }}" class="img-error">
+    <van-icon name="photo-fail" />
+  </view>
+  <slot wx:elif="{{ isError && showError && useErrorSlot }}" name="error"></slot>
+</view>

@@ -1,0 +1,56 @@
+<!--pages/sortList/sortList.wxml-->
+<!-- 数据_格式_过滤器 -->
+<wxs src="/filter/format-filter.wxs" module="filter"></wxs>
+<van-nav-bar wx:if="{{ category != null}}" title="{{ category.name }}" fixed placeholder 
+border="{{ false }}" bind:click-left="returnUpLevelHandle">
+    <view class="navbar" slot="left">
+        <van-icon name="arrow-left" size ="40rpx" bind:click="returnUpLevelHandle"/>
+        <van-icon name="wap-home-o" size ="40rpx" style="margin-left: 20rpx;"/>
+    </view>
+</van-nav-bar>
+
+<!-- category.wxml -->
+<view id="container" class="container">
+  <view class="category-list">
+    <block wx:for="{{category_class}}" wx:for-item="class" wx:key="index">
+      <view class="category-item {{ currentIndex == index ? 'active' : ''}}" bindtap="selectCategory" data-index="{{index}}">
+        {{class.name}}
+      </view>
+    </block>
+  </view>
+
+  <swiper class="comic-swiper" current="{{ currentIndex }}" bindchange="swiperChange">
+    <block wx:for="{{ category_class }}" wx:key="index" wx:for-item="category_class">
+      <swiper-item>
+        <scroll-view id="{{ category_class.newid }}" class="comic-list" scroll-y="true" enhanced ="true"
+         data-index="{{ index }}"  bindscrolltolower="scrollToLowerHandle">
+            <block wx:for="{{ category_class.comicList.comic }}" wx:for-item="comic" wx:key="index">
+                <view class="comic-item" bind:tap="gotoBookDetail" data-comicId="{{ comic.comic_id }}">
+                    <view class="picture">
+                        <lazy-image width="200rpx" 
+                            ratio="{{ filter.convertRatioFormat('3:4') }}" 
+                            fit="widthFix" radius="6" src="{{ comic.cover_img }}"
+                        />
+                        <view class="picture_top">{{ index + 1 }}</view>
+                        <view class="picture_bottom">{{ filter.formatNumber(comic.renqi) }}人气</view>
+                    </view>
+                    <view class="info">
+                        <text class="title">{{comic.comic_name}}</text>
+                        <text class="intro">{{comic.comic_author}}</text>
+                        <view class="comic-type">
+                            <block wx:for="{{  filter.formatComicType(comic.comic_type) }}" wx:key="index">
+                                <text  class="item">{{ item }}</text>
+                            </block>
+                        </view>
+                        <view class="ranking">
+                                {{ comic.cartoon_desc.length > 58 ? filter.formatString(comic.cartoon_desc, 58) + '...' : comic.cartoon_desc }}
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <refresh wx:if="{{ currentIndex == index }}" isHidRefresh="{{isHidRefresh}}"  isNoMore="{{isNoMore}}"/> 
+        </scroll-view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

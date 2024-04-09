@@ -1,0 +1,14 @@
+{
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance":100,
+    "usingComponents": {
+      "loading": "/components/loading/index",
+      "van-icon": "@vant/weapp/icon/index",
+      "van-nav-bar": "@vant/weapp/nav-bar/index",
+      "van-sidebar": "@vant/weapp/sidebar/index",
+      "refresh": "/components/refresh/index",
+      "lazy-image": "/components/lazy-image/index",
+      "van-sticky": "@vant/weapp/sticky/index",
+      "van-sidebar-item": "@vant/weapp/sidebar-item/index"
+    }
+}

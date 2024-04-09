@@ -1,0 +1,87 @@
+<view class="top-title" style="padding-top: {{ topDistance }}px;">
+    <text>书架</text>
+</view>
+
+<view class="container" wx:if="{{!hasUserInfo}}">
+  <image class="logo" src="/static/images/other/logo.png"></image>
+  <button class="login-button" bindtap="login">微信账号登录</button>
+</view>
+
+<view wx:if="{{hasUserInfo}}">
+  <view class="top-tab">
+    <text bindtap="_onTapTab" class="top-tab-item {{currentTab=='history'?'current':''}}" data-tab-name="history">历史</text>
+    <text bindtap="_onTapTab" class="top-tab-item {{currentTab=='collection'?'current':''}}" data-tab-name="history">收藏</text>
+    <image bindtap="_changeComicListMode" class="top-tab-btn" src="{{currentMode=='select'?'../../static/images/bookshelf/top-bar-icon-cancel.png':'../../static/images/bookshelf/top-bar-icon-edit.png'}}"></image>
+  </view>
+
+  <scroll-view class="main {{currentMode=='select'?'':'touch-bottom'}}" hidden="{{currentTab!='collection'}}">
+      <!-- 漫画浏览 Main -->
+    <view class="comic-main">
+      <view class="book-content">
+        <view class="mult sow">
+          <view class="mult-body">
+            <block wx:for="{{ collectionComic }}" wx:key="index" wx:for-item="comic">
+              <comic-card 
+              style="width: 31.5%;" 
+              url="/pages/bookDetails/bookDetails?comicId={{ comic.comicId }}"
+              imgUrl="https://image.yqmh.com/mh/{{comic.comicId}}.jpg-300x400.jpg"
+              horizonratio="3:4"
+              title="{{comic.comic_name}}" 
+              feature="{{comic.content}}"
+              touch_select="{{currentMode == 'select' ? 'true' : 'false'}}"
+              select_image="{{comic.select_image}}"
+              bindtap="getCurrentCtrl" data-comicid="{{comic.comicId}}" 
+              />
+            </block>
+          </view> <!-- 块主体 E -->
+        </view> <!-- 书卡片 E -->
+      </view>
+      <!-- 加载更多数据_等待Load -->
+      <!-- <refresh isHidRefresh="{{isHidRefresh}}"  isNoMore="{{isNoMore}}" /> -->
+    </view>
+  </scroll-view>
+
+  <scroll-view class="main {{currentMode=='select'?'':'touch-bottom'}}" hidden="{{currentTab!='history'}}" scroll-y="true">
+          <!-- 漫画浏览 Main -->
+          <view class="comic-main" hidden="{{!hasHistory}}">
+              <view class="book-content">
+                  <view class="mult sow">
+                      <view class="mult-body">
+                      <block wx:for="{{ historyComic }}" wx:key="index" wx:for-item="comic">
+                          <comic-card 
+                          style="width: 31.5%;" 
+                          url="/pages/bookDetails/bookDetails?comicId={{ comic.comicId }}"
+                          imgUrl="https://image.yqmh.com/mh/{{comic.comicId}}.jpg-300x400.jpg"
+                          horizonratio="3:4"
+                          title="{{comic.comic_name}}" 
+                          feature="{{comic.content}}"
+                          touch_select="{{currentMode == 'select' ? 'true' : 'false'}}"
+                          select_image="{{comic.select_image}}"
+                          bindtap="getCurrentCtrl" data-comicid="{{comic.comicId}}"
+                          />
+                      </block>
+                      </view> <!-- 块主体 E -->
+                  </view> <!-- 书卡片 E -->
+              </view>
+              <!-- 加载更多数据_等待Load -->
+              <!-- <refresh isHidRefresh="{{isHidRefresh}}"  isNoMore="{{isNoMore}}" /> -->
+          </view>
+      <view class="history-empty" hidden="{{hasHistory}}">
+          <image class="history-empty-pic" src="../../static/images/bookshelf/history-empty.png"></image>
+          <text class="history-empty-text">到现在都没有看过一本漫画呐~</text>
+      </view>
+  </scroll-view>
+
+
+  <view class="bottom-ctrl" hidden="{{currentMode!='select'}}">
+      <view bindtap="_toggleSelectAll" class="bottom-btn first-btn">
+          <image class="bottom-btn-icon" src="{{allSelected?'../../static/images/bookshelf/icon-ctrl-btn-no.png':'../../static/images/bookshelf/icon-ctrl-btn-yes.png'}}"></image>
+          <text class="bottom-btn-text">{{allSelected?'取消全选':'全选'}}</text>
+      </view>
+      <view bindtap="_doDelete" class="bottom-btn">
+          <image class="bottom-btn-icon" src="{{noSelected?'../../static/images/bookshelf/icon-ctrl-no-del.png':'../../static/images/bookshelf/icon-ctrl-del.png'}}"></image>
+          <text class="bottom-btn-text {{noSelected?'disabled':''}}">删除</text>
+      </view>
+  </view>
+  
+</view>

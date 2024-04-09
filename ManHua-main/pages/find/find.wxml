@@ -1,0 +1,65 @@
+<!-- 数据_格式_过滤器 -->
+<wxs src="/filter/format-filter.wxs" module="filter"></wxs>
+
+<view class="top-title" style="padding-top: {{ topDistance }}px;">
+    <text>搜索</text>
+</view>
+
+<view class="search-page">
+  <!-- 搜索框 -->
+  <view>
+    <view class="search-box">
+      <input class="search-input" type="text" placeholder="搜索漫画名" bindconfirm="onSearch" bindinput="onSearchInput" value="{{ searchText }}"/>
+      <view wx:if="{{ showClearIcon }}" class="clear-icon" >
+          <image bindtap="clearInput" src="../../static/images/button/clear-icon.png" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 热门搜索推荐 -->
+  <view class="hot-search" wx:if="{{ !showSearchResults }}">
+    <text class="hot-search-title">热门搜索：</text>
+    <view class="hot-search-list">
+      <block wx:for="{{ hotSearch }}" wx:key="index">
+        <text class="hot-search-item" bindtap="onKeywordTap" data-keyword="{{ item }}">{{ item.comic_name }}</text>
+      </block>
+    </view>
+  </view>
+
+  <scroll-view class="search-history" wx:if="{{ !showSearchResults }}" scroll-y="true">
+    <view wx:if="{{ searchHistory.length > 0 }}" class="history-title">最近搜索:</view>
+    <view class="history-list">
+      <block wx:for="{{ searchHistory }}" wx:key="index">
+        <view  class="history-item"  bindtap="selectSearchHistory" data-keyword="{{item}}">{{ item }}</view>
+      </block>
+    </view>
+    <view wx:if="{{ searchHistory.length > 0 }}" class="clear-btn" bindtap="clearHistory">清除历史</view>
+  </scroll-view>
+
+  <!-- 搜索结果展示 -->
+  <scroll-view wx:if="{{ showSearchResults }}" class="search-results" scroll-y="true" style="height: {{windowHeight}}px;">
+    <block wx:for="{{ searchResults }}" wx:key="index">
+      <view class="comic-wrapper">
+        <!-- 漫画_详解 -->
+        <view class="comic-details">
+          <image class="cover" src="{{ item.cover_img }}" bindtap="selectSearchResult" data-comicid="{{ item.comic_id }}"/>
+          <view class="content">
+            <text class="title">{{ item.comic_name }}</text>
+            <view class="info">
+              <view class="comic-tip">
+                <view class="copyright-type">更新</view>
+                <text class="comic-status">{{ item.last_chapter_name }}</text>
+              </view>
+              <text class="comic-heat">人气 {{ filter.formatNumber(item.renqi) }}</text>
+              <view class="comic-type">
+                <block wx:for="{{ filter.formatComicType( item.comic_type ) }}" wx:key="index">
+                  <text class="item">{{ item }}</text>
+                </block>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</view>

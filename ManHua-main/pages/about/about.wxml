@@ -1,0 +1,5 @@
+<!--pages/about/about.wxml-->
+<van-nav-bar title="返回" left-arrow fixed placeholder border="{{ false }}" title-class="top-nav" bind:click-left="returnUpLevelHandle"
+/>
+<text style="margin-top: {{navH}}px;">本程序由个人开发，所获取的资源来自于网络，所涉及的内容，如有侵权，请联系作者，谢谢！</text>
+<text>email：751197483@qq.com</text>

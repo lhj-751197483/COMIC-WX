@@ -1,0 +1,166 @@
+/* pages/rank/rank.wxss */
+/* 漫画排行榜页面的wxss文件 */
+.view-body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+}
+  
+.view-body .head {
+    position: relative;
+    margin-top: 64px;
+}
+
+.head .rank_top {
+    left: 0; 
+    top: 0; 
+    z-index: 1;
+}
+
+.head .rank {
+    display: flex;
+    position: absolute; 
+    left: 40%; 
+    top: 40%; 
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-items: center;
+    z-index: 2;
+}
+
+.rank .rank_icon {
+    height: 60rpx;
+}
+
+.rank .rank_text {
+    text-align: center;
+    color: white;
+    margin-top: 10rpx;
+    font-size: 50rpx;
+}
+
+.view-body .container {
+    display: flex;
+    flex-flow: row nowrap;
+    /* margin-top: 20rpx; */
+}
+
+.container .sidebar {
+    position: sticky;
+    width: 25%;
+    background-color: #ffffff;
+    margin-top: 10rpx;
+    top: 64px;
+}
+
+.sidebar-item {
+    display: flex;
+    justify-content: center;
+    line-height: 70rpx;
+    font-size: 28rpx;
+    text-align: center;
+    margin-bottom: 60rpx;
+    margin-top: 10rpx;
+    border-top-right-radius: 80rpx;
+    border-bottom-right-radius: 80rpx;
+}
+
+.sidebar-item.active {
+    background-color: greenyellow;
+}
+
+/* index.wxss */
+.container .comic-list {
+    padding: 20rpx;
+    /* display: flexbox; */
+    width: 75%;
+    
+}
+  
+.comic-item {
+    display: flex;
+    margin: 20rpx;
+    margin-bottom: 50rpx;
+}
+
+.comic-item .picture {
+    position: relative;
+    width: 200rpx;
+    margin-right: 20rpx;
+}
+  
+.picture .picture_top {
+    position: absolute; 
+    left: 3%; 
+    top: 1%; 
+    align-items: center;
+    justify-items: center;
+    color: rgb(255, 255, 255);
+    z-index: 2;
+}
+
+.picture .picture_bottom {
+    display: flex;
+    position: absolute; 
+    bottom: 3%;
+    right: 3%; 
+    font-size: 20rpx;
+    align-items: center;
+    justify-items: center;
+    color: rgb(255, 255, 255);
+    z-index: 2;
+}
+
+.info {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content:space-between;
+}
+  
+.title {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #333;
+}
+  
+.intro {
+    font-size: 24rpx;
+    color: #666;
+    margin-top: 10rpx;
+}
+
+.info .comic-type .item {
+    display: inline-block;
+}
+
+.comic-type .item {
+    height: 28rpx;
+    line-height: 28rpx;
+    padding: 0rpx 15rpx;
+    border-radius: 30rpx;
+    margin-right: 10rpx;
+    font-size: 20rpx;
+    border: 1rpx #e6e6e6 solid;
+}
+
+.ranking {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-flow: row;
+    margin-top: 10rpx;
+}
+
+.ranking_text {
+    font-size: 18rpx;
+    color: #999;
+}
+
+.ranking_img {
+    width: 25rpx;
+}
+
+.refresh {
+    width: 70%;
+    margin-left: 25%;
+}

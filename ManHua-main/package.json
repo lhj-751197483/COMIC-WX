@@ -1,0 +1,37 @@
+{
+  "name": "manhua",
+  "version": "1.0.0",
+  "description": "My first ManHua Website",
+  "main": "app.js",
+  "scripts": {
+    "lint": "eslint --fix ."
+  },
+  "author": "wu_shaodong",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.10.19",
+    "vant-weapp": "^0.5.29"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaodong-wu/ManHua.git"
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "miniprogram_npm",
+    ".eslintrc.js",
+    "package.json",
+    "project.config.json"
+  ],
+  "bugs": {
+    "url": "https://github.com/shaodong-wu/ManHua/issues"
+  },
+  "homepage": "https://github.com/shaodong-wu/ManHua#readme"
+}

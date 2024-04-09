@@ -1,0 +1,9 @@
+{
+    "navigationBarTextStyle": "black",
+    "usingComponents": {
+      "van-icon": "@vant/weapp/icon/index",
+      "van-nav-bar": "@vant/weapp/nav-bar/index",
+      "lazy-image": "/components/lazy-image/index",
+      "refresh": "/components/refresh/index"
+    }
+}

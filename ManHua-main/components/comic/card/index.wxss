@@ -1,0 +1,27 @@
+/* comic-card style */
+.card {
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+
+.card .title {
+  display: block;
+  font-size: 25rpx;
+  font-weight: 500;
+  margin-top: 5rpx;
+  margin-bottom: 8rpx;
+}
+
+.card .feature {
+  display: block;
+  width: 100%;
+  color: #999999;
+  font-size: 20rpx;
+}
+
+.card .title,
+.card .feature {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

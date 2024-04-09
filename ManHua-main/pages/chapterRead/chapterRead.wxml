@@ -1,0 +1,85 @@
+<!-- 漫画_View_Lsit -->
+<scroll-view class="view-port"  scroll-y enhanced="{{true}}" show-scrollbar="{{ false }}" bindscrolltolower="scrollToLowerHandle"
+  scroll-top="{{scrollDistance}}"  bindscroll="handleScroll">
+  <view wx:for="{{ imageViewsList }}" wx:key="index" wx:for-item="chapter" 
+  class="chapter" data-title="{{ chapter.chapter_name }}" bindtouchend="onScrollViewTouchEnd" bindtouchstart="onScrollViewTouchStart">
+    <block wx:for="{{ chapter.chapterImgList }}" wx:key="index" wx:for-item="imgUrl">
+      <lazy-image custom-class="image-view" src="{{ imgUrl }}" width="100%" fit="widthFix" 
+        use-loading-slot use-error-slot data-image="{{src}}">
+        <view class="loading" slot="loading">
+          <text class="tip">{{ index + 1 }}</text>
+        </view>
+        <view class="error" slot="error">
+          <text class="tip">《{{ chapterInfo.comiRRc_name }}》加载失败 呜〒▽〒</text>
+          <view class="operation">
+            <button class="action" plain hover-class="none" size="mini">反馈</button>
+            <button class="action" plain hover-class="none" size="mini">刷新</button>
+          </view>
+        </view>
+      </lazy-image>
+    </block>
+  </view>
+</scroll-view>
+
+<!-- 顶部导航__Btn -->
+<van-popup position="top" overlay="{{ false }}" show="{{ isShowMenu }}">
+  <van-nav-bar wx:if="{{ chapterInfo != null }}" title="{{ chapterInfo.current_chapter.chapter_name }}" left-arrow border="{{ false }}"
+    title-class="top-nav" bind:click-left="returnUpLevelHandle"
+  />
+</van-popup>
+
+<!-- 底部功能_Btn -->
+<van-popup custom-class="menu-wrapper" round position="bottom" overlay="{{ false }}" show="{{ isShowMenu }}">
+  <van-slider wx:if="{{isAutoScroll}}" value="{{ currentValue }}" min = "{{1}}" max="{{50}}" use-button-slot  bind:drag="onDrag" bind:change="onChange" style="width: 80%; margin-top: 40rpx;">
+    <image src="/static/images/other/logo.png"  slot="button"  style="height: 70rpx; width: 70rpx;"></image>
+  </van-slider>
+  <view class="btn-wrapper">
+    <view class="bottom-btn">
+      <van-icon name="arrow-left" size="50rpx" bindtap="pageUp"/>
+      <text class="tip">上一页</text>
+    </view>
+    <view class="bottom-btn" bindtap="showSideCatalogueHandle">
+      <van-icon class-prefix="kanman-icon" name="mulu" size="50rpx" />
+      <text class="tip">目录</text>
+    </view>
+    <view class="bottom-btn" bindtap="scrollDown" wx:if="{{!isAutoScroll}}">
+      <van-icon class-prefix="kanman-icon" name="shipin" size="50rpx" />
+      <text class="tip">自动</text>
+    </view>
+    <view class="bottom-btn" bindtap="scrollDown" wx:if="{{isAutoScroll}}">
+      <van-icon class-prefix="kanman-icon" name="stop" size="50rpx" />
+      <text class="tip">停止</text>
+    </view>
+    <view class="bottom-btn">
+      <van-icon name="arrow" size="50rpx" bindtap="pageDown"/>
+      <text class="tip">下一页</text>
+    </view>
+    <view wx:if="{{!isCollected}}" class="bottom-btn">
+      <van-icon  name="like-o" size="50rpx" bindtap="collect"/>
+      <text class="tip">收藏</text>
+    </view>
+    <view wx:else class="bottom-btn">
+      <van-icon name="like" size="50rpx" bindtap="collect"/>
+      <text class="tip">已收藏</text>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 侧边目录_导航 -->
+<van-popup custom-class="side-wrapper" position="right"  show="{{ isShowCatalogue }}"    bind:click-overlay="closeSideCatalogueHandle"  bind:after-enter="onPopupOpened">
+  <view class="side-head">
+      <text class="summary">共{{ chapterList.length }}章 连载中</text>
+      <text class="update-time">昨天更新</text>
+  </view>
+  <scroll-view scroll-y="true" scroll-into-view="item_{{targetCatalogueId}}" style="height: {{windowHeight}}px;">
+    <block wx:for="{{ chapterList }}" wx:key="index" wx:for-item="chapter">
+      <view class="side-body"  id="item_{{chapter.chapter_id}}">
+        <navigator class="item" hover-class="none" open-type="redirect"
+          url="/pages/chapterRead/chapterRead?comicId={{ chapterInfo.comic_id }}&chapterNewid={{ chapter.chapter_newid }}">
+          <text space="emsp" class="{{chapter.chapter_id == targetCatalogueId ? 'red' : 'black'}}">{{ chapter.chapter_name }}</text>
+        </navigator>
+      </view>
+    </block>
+  </scroll-view>
+</van-popup>
+

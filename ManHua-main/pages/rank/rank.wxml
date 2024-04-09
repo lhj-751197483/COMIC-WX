@@ -1,0 +1,61 @@
+<!--pages/rank/rank.wxml-->
+<!-- 数据_格式_过滤器 -->
+<wxs src="/filter/format-filter.wxs" module="filter"></wxs>
+<van-nav-bar style="z-index: 3; position: absolute;" title="排行榜"  left-arrow fixed placeholder border="{{ false }}" bind:click-left="returnUpLevelHandle"
+/>
+
+<scroll-view class="view-body" scroll-into-view="{{ scrollTop }}" scroll-with-animation="true" scroll-y="{{true}}" bindscroll="sidebarPosition" bindscrolltolower="scrollToLowerHandle">
+    <!-- 漫画排行榜页面的wxml文件 -->
+    <view id="head" class="head" >
+        <image class="rank_top" src="https://image.yqmh.com/mh/{{topComicId}}.jpg" mode="top" style="width: 100%;"/>
+        <view class="rank">
+            <image class="rank_icon" src="/static/images/other/ranklist.png" mode="heightFix"/>
+            <view class="rank_text">{{categories[currentIndex].name}}</view>
+        </view>
+    </view>
+
+    <view class="container">
+    <!-- 侧边导航栏 -->
+        <scroll-view class="sidebar" style="height: calc(57vh + {{ sideHeight }}px);" scroll-y="true" scroll-into-view="{{ scrollTopId }}">
+            <block wx:for="{{categories}}" wx:key="index">
+                <view id="category{{ index }}" class="sidebar-item {{ currentIndex === index?'active':'' }}" 
+                    style="background-color: {{item.backgroundColor}}" data-index="{{ index }}" bind:tap="switchCategory">
+                        {{item.name}}
+                </view>
+            </block>
+        </scroll-view>
+
+    <!-- 漫画列表 -->
+        <view class="comic-list">
+            <block wx:for="{{comicList}}" wx:for-item="comic" wx:key="index">
+                <view class="comic-item" bind:tap="gotoBookDetail" data-comicId="{{ comic.comic_id }}">
+                    <view class="picture">
+                        <lazy-image width="200rpx" 
+                            ratio="{{ filter.convertRatioFormat('3:4') }}" 
+                            fit="widthFix" radius="6" src="https://image.yqmh.com/mh/{{comic.comic_id}}.jpg-300x400.jpg"
+                        />
+                        <view class="picture_top">{{ index + 1 }}</view>
+                        <view class="picture_bottom">{{ filter.formatNumber(comic.count_num) }}人气</view>
+                    </view>
+                    <view class="info">
+                        <text class="title">{{comic.comic_name}}</text>
+                        <text class="intro">{{comic.comic_feature}}</text>
+                        <view class="comic-type">
+                            <block wx:for="{{ comic.cartoon_type_list }}" wx:key="index">
+                                <text class="item">{{ item.name }}</text>
+                            </block>
+                        </view>
+                        <view class="ranking">
+                            <image wx:if="{{ comic.rise_rank >= 0 }}" class="ranking_img" src="/static/images/arrow/icon_16_arrow_rise.png" mode="widthFix"/>
+                            <image wx:if="{{ comic.rise_rank < 0 }}" class="ranking_img" src="/static/images/arrow/icon_16_arrow_decline.png" mode="widthFix"/>
+                            <text wx:if="{{ comic.rise_rank > 0 }}" class="ranking_text">上升{{ comic.rise_rank }}名</text>
+                            <text wx:if="{{ comic.rise_rank < 0 }}" class="ranking_text">下降{{ -comic.rise_rank }}名</text>
+                            <text wx:if="{{ comic.rise_rank == 0 }}" class="ranking_text">稳居{{ index + 1 }}名</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <refresh class="refresh" isHidRefresh="{{isHidRefresh}}"  isNoMore="{{isNoMore}}"/> 
+        </view>
+    </view>
+</scroll-view>

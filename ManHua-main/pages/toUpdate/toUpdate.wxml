@@ -1,0 +1,34 @@
+<!-- 漫画卡片_展示 -->
+<scroll-view class="update-list" scroll-y="true" scroll-into-view="item_{{ activeIndex}}" bindscroll="onScrollViewScroll" 
+  style="padding-top: {{ topDistance }}px;">
+  <block wx:for="{{ slideList }}" wx:key="index" wx:for-item="slideInfo">
+    <view class="item-wrapper"  id="item_{{ index }}">
+      <text class="head">{{ slideInfo.comicUpdateDate_new}}</text>
+      <view class="body">
+        <block wx:for="{{ slideInfo.info }}" wx:key="index" wx:for-item="comicInfo">
+          <comic-cover 
+          url="/pages/bookDetails/bookDetails?comicId={{comicInfo.comic_id}}"
+          name="{{ comicInfo.comic_name }}" 
+          type="{{ comicInfo.comic_type[0] }}" 
+          feature="{{ comicInfo.comic_feature }}"
+          latestChapter="{{ comicInfo.comic_chapter_name }}" 
+          cover="https://image.yqmh.com/mh/{{comicInfo.comic_id}}.jpg"
+          isShowSplit="{{ index === (slideInfo.info.length-1)? true : false }}" 
+          />
+        </block>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+
+<!-- 侧边导航 -->
+<view class="side-wrapper">
+  <block wx:for="{{ slideList }}" wx:key="index">
+    <view class="{{index === slideIndex? 'item-nav active' : 'item-nav'}}" data-index="{{index}}" bind:tap="onClickHandle">
+      {{ item.comicUpdateDate }}
+    </view>
+  </block>
+</view>
+
+<!-- 数据渲染_等待Load -->
+<wait isHidWait="{{ isHidWait }}"></wait>

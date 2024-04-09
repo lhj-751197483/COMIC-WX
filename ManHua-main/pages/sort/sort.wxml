@@ -1,0 +1,35 @@
+<!--pages/sort/sort.wxml-->
+<!-- 数据_格式_过滤器 -->
+<wxs src="/filter/format-filter.wxs" module="filter"></wxs>
+<van-nav-bar title="分类"  left-arrow fixed placeholder border="{{ false }}" bind:click-left="returnUpLevelHandle"
+/>
+<!-- category.wxml -->
+<view class="container">
+  <!-- 分类列表 -->
+  <scroll-view class="category-list" scroll-y="{{true}}" bindscrolltolower="scrollToLowerHandle">
+    <block wx:for="{{categories}}" wx:for-item="category" wx:key="index">
+      <view class="category-item" wx:if="{{ sortList[index].length > 0}}" data-index="{{ index }}" bind:tap="viewCategory">
+        <view class="category-title">
+            <view class="title">{{category.name}}</view>
+            <view class="view-category" bindtap="viewCategory" data-index="{{ index }}">查看分类＞</view>
+        </view>
+        <view class="category-body">
+            <view class="comics-list">
+                <block wx:for="{{ sortList[index] }}" wx:for-item="comic" wx:key="index" wx:if="{{ index + 1 <= 5}}">
+                    <view class="comic">
+                        <view class="ranking">{{ index + 1}}.</view>
+                        <view class="comic-title">{{ comic.comic_name }}</view>
+                    </view>
+                </block>
+            </view>
+            <lazy-image class="first-comic-image" width="100%" 
+                ratio="{{ filter.convertRatioFormat('3:4') }}" 
+                fit="widthFix" radius="6" src="{{ sortList[index][0].cover_img }}"
+            />
+        </view>
+      </view>
+    </block>
+    <refresh isHidRefresh="{{isHidRefresh}}"  isNoMore="{{isNoMore}}"/> 
+  </scroll-view>
+</view>
+

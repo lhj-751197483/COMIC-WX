@@ -1,0 +1,39 @@
+<!--pages/myself/myself.wxml-->
+<view class="container" wx:if="{{!hasUserInfo}}">
+  <image class="logo" src="/static/images/other/logo.png"></image>
+  <button class="login-button" bindtap="login">微信账号登录</button>
+</view>
+
+<view class="user_container"  wx:if="{{hasUserInfo}}">
+  <div  class="background">
+  </div>
+  <view class="user-avatar">
+     <image class="avatar-image" src="{{ userInfo.avatarUrl }}"></image>
+  </view>
+  <text class="username">{{ userInfo.name }}</text>
+  <view class="user-bio">{{ userInfo.introduction }}</view>
+
+  <view class="contact-wrapper" bindtap="about">
+    <van-icon class="contact-icon" name="comment-circle-o" size="20px"/>
+    <view class="contact-text">联系我们</view>
+    <van-icon class="arrow-icon" name="arrow" size="16px" />
+  </view>
+
+  <view class="contact-wrapper">
+    <van-icon class="contact-icon" name="smile-comment-o" size="20px" />
+    <view class="contact-text">意见反馈</view>
+    <van-icon class="arrow-icon" name="arrow" size="16px" />
+  </view>
+
+  <view class="contact-wrapper" bindtap="setting">
+    <van-icon class="contact-icon" name="contact" size="20px" />
+    <view class="contact-text">个人设置</view>
+    <van-icon class="arrow-icon" name="arrow" size="16px" />
+  </view>
+
+  <view class="contact-wrapper" bindtap="logout">
+    <van-icon class="contact-icon" name="logistics" size="20px" />
+    <view class="contact-text">用户注销</view>
+    <van-icon class="arrow-icon" name="arrow" size="16px" />
+  </view>
+</view>

@@ -1,0 +1,15 @@
+<wxs src="/filter/format-filter.wxs" module="filter"></wxs>
+
+<!-- 漫画卡片 -->
+<view class="card"> 
+  <navigator url="{{ touch_select == 'true' ? '' : url}}" hover-class="none">
+    <image src="{{  select_image  }}" hidden="{{touch_select != 'true'}}" style=" position: absolute; height: 50rpx; width: 50rpx; z-index: 1;"/> 
+    <lazy-image wx:if="{{ select_image === ''}}" width="100%" 
+      ratio="{{ filter.convertRatioFormat(horizonratio) }}"
+      fit="widthFix" radius="6" src="{{ imgUrl }}" 
+    />
+    <image wx:if="{{ select_image != ''}}" src="{{ imgUrl }}" mode="widthFix" style=" width:100%"/>
+    <text class="title">{{ title }}</text>
+    <text class="feature">{{ feature }}</text>
+  </navigator>
+</view>
